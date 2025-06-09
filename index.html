@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day12_assign2</title>
+    <style>
+        .cont{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: blanchedalmond;
+            width: 350px;
+            margin-left: 600px;
+            height: 300px;
+            margin-top: 150px;
+        }
+        .in{
+            display: flex;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        .out{
+            display: flex;
+        text-align: center;
+        margin-left: 14px;
+        margin-top: 30px;
+        font-size: 18px;
+        }
+        #in_str{
+            margin-left: 10px;
+            padding: 3px;
+        }
+        #out_str{
+            margin-left: 10px;
+            padding: 3px;
+        }
+        #AO{
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 15px;
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+            border-color: white;
+        }
+        #AO:hover{
+            background-color: white;
+            color: black;
+        }
+        #rAO:active{
+            transform: scale(0.9,0.9);
+        }
+    </style>
+</head>
+<body>
+    <!-- <p id="revno"></p> -->
+
+    <div class="cont">
+        <div>
+            <h1>Alphabetical Order</h1>
+        </div>
+
+        <div class="in">
+            Enter the String : <input type="text" id="in_str" placeholder="Text to be sorted">
+        </div>
+
+        <div>
+            <input type="submit" id="AO" value="Alphabetical Order">
+        </div>
+
+        <div class="out">
+            Sorted String : <input type="text" id="out_str" placeholder="Alphabetical order" readonly>
+        </div>
+    </div>
+    <script>
+
+        document.addEventListener('DOMContentLoaded',function(){
+            let ins=document.getElementById("in_str");
+            let ous=document.getElementById("out_str");
+            let button=document.getElementById("AO");
+
+            function sort_char(tex){
+                
+                let strarr=tex.split('');
+                strarr.sort();
+
+                let resu=strarr.join('');
+
+                return resu;
+
+            
+            }  
+
+            function handleaction(){
+                let inp=ins.value;
+                let result=sort_char(inp);
+                ous.value=result;
+                
+            }
+
+
+            ins.addEventListener("keydown",function(event){
+                if(event.key=="Enter"){
+                    event.preventDefault();
+                    handleaction();
+                }
+
+            })
+
+            button.addEventListener('click',handleaction);
+
+        })
+
+    </script>
+</body>
+</html>
